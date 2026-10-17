@@ -105,10 +105,21 @@
           <h2 data-i18n="screenshotsTitle">Designed for a calm financial review.</h2>
           <p data-i18n="screenshotsDescription">Product screenshots will be added here as the beta evolves.</p>
         </div>
-        <div class="screenshot-grid" aria-label="Screenshot placeholders" data-i18n-aria-label="screenshotPlaceholders">
-          <div class="screenshot-slot"><span>01</span><b data-i18n="screenshotCapital">Capital overview</b><small data-i18n="screenshotComingSoon">Screenshot coming soon</small></div>
-          <div class="screenshot-slot"><span>02</span><b data-i18n="screenshotFinance">Finance workspace</b><small data-i18n="screenshotComingSoon">Screenshot coming soon</small></div>
-          <div class="screenshot-slot"><span>03</span><b data-i18n="screenshotHistory">Historical view</b><small data-i18n="screenshotComingSoon">Screenshot coming soon</small></div>
+        <div class="gallery" aria-label="Product screenshots" data-i18n-aria-label="galleryAria">
+          <div class="gallery-stage">
+            <button class="gallery-image-button" id="gallery-open" type="button" aria-label="Open screenshot full screen" data-i18n-aria-label="galleryOpenAria">
+              <img id="gallery-main-image" src="assets/screenshots/dashboard.webp" alt="Capital OS dashboard" />
+            </button>
+            <div class="gallery-controls">
+              <button class="gallery-arrow" id="gallery-previous" type="button" aria-label="Previous screenshot" data-i18n-aria-label="galleryPreviousAria">←</button>
+              <div class="gallery-caption" aria-live="polite">
+                <strong id="gallery-caption-title">Capital dashboard</strong>
+                <span id="gallery-caption-description">Your capital overview in one place.</span>
+              </div>
+              <button class="gallery-arrow" id="gallery-next" type="button" aria-label="Next screenshot" data-i18n-aria-label="galleryNextAria">→</button>
+            </div>
+          </div>
+          <div class="gallery-thumbnails" id="gallery-thumbnails" role="tablist" aria-label="Choose a screenshot" data-i18n-aria-label="galleryThumbnailsAria"></div>
         </div>
       </section>
 
@@ -150,5 +161,18 @@
       <p data-i18n="footerDescription">Local-first personal finance for Windows.</p>
       <a class="bug-link" href="https://github.com/hesouam999-source/capital-os-updates/issues/new" target="_blank" rel="noreferrer"><span data-i18n="reportBug">Report a bug</span> <span aria-hidden="true">↗</span></a>
     </footer>
+
+    <dialog class="gallery-dialog" id="gallery-dialog" aria-labelledby="gallery-dialog-title">
+      <div class="gallery-dialog-content">
+        <button class="gallery-dialog-close" id="gallery-close" type="button" aria-label="Close full screen screenshot" data-i18n-aria-label="galleryCloseAria">×</button>
+        <button class="gallery-dialog-arrow gallery-dialog-previous" id="gallery-dialog-previous" type="button" aria-label="Previous screenshot" data-i18n-aria-label="galleryPreviousAria">←</button>
+        <img id="gallery-dialog-image" src="assets/screenshots/dashboard.webp" alt="Capital OS dashboard" />
+        <button class="gallery-dialog-arrow gallery-dialog-next" id="gallery-dialog-next" type="button" aria-label="Next screenshot" data-i18n-aria-label="galleryNextAria">→</button>
+        <div class="gallery-dialog-caption">
+          <strong id="gallery-dialog-title">Capital dashboard</strong>
+          <span id="gallery-dialog-description">Your capital overview in one place.</span>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>

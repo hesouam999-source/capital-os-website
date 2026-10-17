@@ -15,7 +15,8 @@ const translations = {
     productPrinciples: "Product principles", trustLocalTitle: "Local data", trustLocalText: "Your data stays on your computer", trustPictureTitle: "One clear picture", trustPictureText: "Capital and cash flow, side by side", trustUpdatesTitle: "Built to evolve", trustUpdatesText: "Updates arrive through the app",
     foundationEyebrow: "THE FOUNDATION", featuresTitle: "Everything you need to understand your money.", featuresDescription: "Capital OS brings long-term wealth tracking and everyday personal finance into one focused desktop application.",
     featureNetWorthTitle: "Net Worth Tracking", featureNetWorthText: "Track the value of your full financial picture over time.", featureAssetsTitle: "Assets & Liabilities", featureAssetsText: "Keep property, vehicles, accounts, debts, and other objects in one place.", featureSnapshotsTitle: "Historical Snapshots", featureSnapshotsText: "See how your capital changed, with a clear history you can revisit.", featureFinanceTitle: "Finance Management", featureFinanceText: "Manage accounts, transactions, budgets, goals, and recurring payments.", featureExcelTitle: "Excel Import", featureExcelText: "Bring historical financial data into a structured, reviewable workspace.", featureWorkspaceTitle: "Customizable Workspace", featureWorkspaceText: "Arrange the information that matters most to you.",
-    screenshotsEyebrow: "A CLOSER LOOK", screenshotsTitle: "Designed for a calm financial review.", screenshotsDescription: "Product screenshots will be added here as the beta evolves.", screenshotPlaceholders: "Screenshot placeholders", screenshotCapital: "Capital overview", screenshotFinance: "Finance workspace", screenshotHistory: "Historical view", screenshotComingSoon: "Screenshot coming soon",
+    screenshotsEyebrow: "A CLOSER LOOK", screenshotsTitle: "Designed for a calm financial review.", screenshotsDescription: "Explore Capital OS across its core workspaces.", galleryAria: "Product screenshots", galleryOpenAria: "Open screenshot full screen", galleryPreviousAria: "Previous screenshot", galleryNextAria: "Next screenshot", galleryCloseAria: "Close full screen screenshot", galleryThumbnailsAria: "Choose a screenshot",
+    galleryDashboardTitle: "Capital dashboard", galleryDashboardText: "Your capital overview in one place.", galleryObjectsTitle: "Assets and liabilities", galleryObjectsText: "Organize the things you own and what you owe.", galleryWorkspaceTitle: "Object workspace", galleryWorkspaceText: "Review an object and its details in a focused workspace.", gallerySnapshotsTitle: "Historical snapshots", gallerySnapshotsText: "Follow the history of your capital over time.", galleryFinanceTitle: "Finance OS", galleryFinanceText: "Track accounts, transactions, and everyday cash flow.", galleryAnalyticsTitle: "Finance analytics", galleryAnalyticsText: "Understand spending and cash-flow patterns.",
     supportEyebrow: "SUPPORT CAPITAL OS", supportTitle: "Help us build a better Capital OS.", supportText: "Your support helps us keep improving this local-first financial workspace.", supportButton: "❤️ Support Development",
     windowsBeta: "WINDOWS BETA", installTitle: "Start with your own financial system.", installVersionLoading: "The latest beta will appear here when the release channel is available.", guideDownloadTitle: "Download", guideDownloadText: "Download the latest Windows installer from the official release channel.", guideInstallTitle: "Install", guideInstallText: "Run the installer and follow the Windows prompts. Your existing data is kept in its current location.", guideOpenTitle: "Open Capital OS", guideOpenText: "Create a test Capital first if you are evaluating the beta.", betaNoticeTitle: "Beta notice:", betaNoticeText: "the installer is not yet Authenticode-signed by Windows. Windows may show a reputation warning. Download only from this official page or the linked GitHub Release.", footerDescription: "Local-first personal finance for Windows.", reportBug: "Report a bug",
     downloadForWindows: "Download for Windows", downloadAria: "Download Capital OS {version} for Windows", latestRelease: "Latest public beta: v{version} · Windows x64", currentRelease: "Current public beta: v{version} for Windows x64.", viewDownloads: "View Windows downloads", releaseLoadError: "The latest version could not be loaded. Open the official releases page to download it.", releaseInstallError: "Open the official release page to choose the latest Windows installer.",
@@ -32,7 +33,8 @@ const translations = {
     productPrinciples: "Принципы продукта", trustLocalTitle: "Данные локально", trustLocalText: "Ваши данные остаются на компьютере", trustPictureTitle: "Одна понятная картина", trustPictureText: "Капитал и денежный поток рядом", trustUpdatesTitle: "Готово к развитию", trustUpdatesText: "Обновления приходят через приложение",
     foundationEyebrow: "ОСНОВА", featuresTitle: "Всё, чтобы понимать свои финансы.", featuresDescription: "Capital OS объединяет долгосрочный учёт капитала и ежедневные личные финансы в одном понятном приложении для ПК.",
     featureNetWorthTitle: "Учёт капитала", featureNetWorthText: "Отслеживайте стоимость всей вашей финансовой картины во времени.", featureAssetsTitle: "Активы и обязательства", featureAssetsText: "Храните недвижимость, автомобили, счета, долги и другие объекты в одном месте.", featureSnapshotsTitle: "Исторические снимки", featureSnapshotsText: "Смотрите, как менялся капитал, в понятной истории.", featureFinanceTitle: "Управление финансами", featureFinanceText: "Ведите счета, операции, бюджеты, цели и регулярные платежи.", featureExcelTitle: "Импорт из Excel", featureExcelText: "Переносите исторические финансовые данные в структурированное рабочее пространство.", featureWorkspaceTitle: "Настраиваемое рабочее пространство", featureWorkspaceText: "Расположите информацию, которая важнее всего для вас.",
-    screenshotsEyebrow: "БЛИЖЕ К ПРОДУКТУ", screenshotsTitle: "Спокойный взгляд на финансы.", screenshotsDescription: "Скриншоты продукта будут добавлены по мере развития бета-версии.", screenshotPlaceholders: "Места для скриншотов", screenshotCapital: "Обзор капитала", screenshotFinance: "Рабочее пространство финансов", screenshotHistory: "Исторический вид", screenshotComingSoon: "Скриншот скоро появится",
+    screenshotsEyebrow: "БЛИЖЕ К ПРОДУКТУ", screenshotsTitle: "Спокойный взгляд на финансы.", screenshotsDescription: "Посмотрите ключевые рабочие пространства Capital OS.", galleryAria: "Скриншоты продукта", galleryOpenAria: "Открыть скриншот на весь экран", galleryPreviousAria: "Предыдущий скриншот", galleryNextAria: "Следующий скриншот", galleryCloseAria: "Закрыть полноэкранный скриншот", galleryThumbnailsAria: "Выберите скриншот",
+    galleryDashboardTitle: "Панель капитала", galleryDashboardText: "Обзор вашего капитала в одном месте.", galleryObjectsTitle: "Активы и обязательства", galleryObjectsText: "Организуйте то, чем владеете, и то, что должны.", galleryWorkspaceTitle: "Рабочее пространство объекта", galleryWorkspaceText: "Изучайте объект и его детали в отдельном рабочем пространстве.", gallerySnapshotsTitle: "Исторические снимки", gallerySnapshotsText: "Следите за историей капитала во времени.", galleryFinanceTitle: "Finance OS", galleryFinanceText: "Ведите счета, операции и ежедневный денежный поток.", galleryAnalyticsTitle: "Финансовая аналитика", galleryAnalyticsText: "Понимайте структуру расходов и денежного потока.",
     supportEyebrow: "ПОДДЕРЖКА CAPITAL OS", supportTitle: "Помогите нам сделать Capital OS лучше.", supportText: "Ваша поддержка помогает развивать локальное финансовое рабочее пространство.", supportButton: "❤️ Поддержать разработку",
     windowsBeta: "WINDOWS BETA", installTitle: "Начните со своей финансовой системы.", installVersionLoading: "Последняя бета появится здесь, когда будет доступен канал релизов.", guideDownloadTitle: "Скачать", guideDownloadText: "Скачайте последнюю версию установщика Windows из официального канала релизов.", guideInstallTitle: "Установить", guideInstallText: "Запустите установщик и следуйте подсказкам Windows. Существующие данные останутся на прежнем месте.", guideOpenTitle: "Открыть Capital OS", guideOpenText: "Для знакомства с бета-версией сначала создайте тестовый Capital.", betaNoticeTitle: "Бета-версия:", betaNoticeText: "у установщика пока нет подписи Windows Authenticode. Windows может показать предупреждение репутации. Скачивайте программу только с этой официальной страницы или по ссылке на GitHub Release.", footerDescription: "Локальная персональная финансовая система для Windows.", reportBug: "Сообщить об ошибке",
     downloadForWindows: "Скачать для Windows", downloadAria: "Скачать Capital OS {version} для Windows", latestRelease: "Последняя публичная бета: v{version} · Windows x64", currentRelease: "Текущая публичная бета: v{version} для Windows x64.", viewDownloads: "Открыть загрузки для Windows", releaseLoadError: "Не удалось загрузить последнюю версию. Откройте официальную страницу релизов, чтобы скачать её.", releaseInstallError: "Откройте официальную страницу релизов и выберите последнюю версию установщика Windows.",
@@ -46,8 +48,31 @@ const installLabel = document.querySelector("#install-download-label");
 const status = document.querySelector("#release-status");
 const installVersion = document.querySelector("#install-version");
 const languageButtons = document.querySelectorAll("[data-language]");
+const galleryMainImage = document.querySelector("#gallery-main-image");
+const galleryOpenButton = document.querySelector("#gallery-open");
+const galleryPreviousButton = document.querySelector("#gallery-previous");
+const galleryNextButton = document.querySelector("#gallery-next");
+const galleryCaptionTitle = document.querySelector("#gallery-caption-title");
+const galleryCaptionDescription = document.querySelector("#gallery-caption-description");
+const galleryThumbnails = document.querySelector("#gallery-thumbnails");
+const galleryDialog = document.querySelector("#gallery-dialog");
+const galleryDialogImage = document.querySelector("#gallery-dialog-image");
+const galleryDialogTitle = document.querySelector("#gallery-dialog-title");
+const galleryDialogDescription = document.querySelector("#gallery-dialog-description");
+const galleryCloseButton = document.querySelector("#gallery-close");
+const galleryDialogPreviousButton = document.querySelector("#gallery-dialog-previous");
+const galleryDialogNextButton = document.querySelector("#gallery-dialog-next");
+const screenshots = [
+  { file: "dashboard.webp", title: "galleryDashboardTitle", description: "galleryDashboardText" },
+  { file: "objects.webp", title: "galleryObjectsTitle", description: "galleryObjectsText" },
+  { file: "object-workspace.webp", title: "galleryWorkspaceTitle", description: "galleryWorkspaceText" },
+  { file: "snapshots.webp", title: "gallerySnapshotsTitle", description: "gallerySnapshotsText" },
+  { file: "finance-os.webp", title: "galleryFinanceTitle", description: "galleryFinanceText" },
+  { file: "analytics.webp", title: "galleryAnalyticsTitle", description: "galleryAnalyticsText" },
+];
 let currentLanguage = "en";
 let releaseState = { type: "loading" };
+let selectedScreenshotIndex = 0;
 
 function getInitialLanguage() {
   try {
@@ -107,6 +132,43 @@ function applyLanguage(language, persist = false) {
     try { localStorage.setItem(languageStorageKey, currentLanguage); } catch { /* Storage is optional. */ }
   }
   renderReleaseState();
+  renderGallery();
+}
+
+function renderGallery() {
+  const screenshot = screenshots[selectedScreenshotIndex];
+  if (!screenshot) return;
+  const source = `assets/screenshots/${screenshot.file}`;
+  const title = t(screenshot.title);
+  const description = t(screenshot.description);
+  galleryMainImage.src = source;
+  galleryMainImage.alt = title;
+  galleryCaptionTitle.textContent = title;
+  galleryCaptionDescription.textContent = description;
+  galleryDialogImage.src = source;
+  galleryDialogImage.alt = title;
+  galleryDialogTitle.textContent = title;
+  galleryDialogDescription.textContent = description;
+  galleryThumbnails.innerHTML = screenshots.map((item, index) => {
+    const isSelected = index === selectedScreenshotIndex;
+    const itemTitle = t(item.title);
+    return `<button class="gallery-thumbnail${isSelected ? " is-selected" : ""}" type="button" role="tab" aria-selected="${isSelected}" aria-label="${itemTitle}" data-screenshot-index="${index}"><img src="assets/screenshots/${item.file}" alt="" /><span>${itemTitle}</span></button>`;
+  }).join("");
+  galleryThumbnails.querySelectorAll("[data-screenshot-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedScreenshotIndex = Number(button.dataset.screenshotIndex);
+      renderGallery();
+    });
+  });
+}
+
+function selectScreenshot(offset) {
+  selectedScreenshotIndex = (selectedScreenshotIndex + offset + screenshots.length) % screenshots.length;
+  renderGallery();
+}
+
+function openGallery() {
+  if (!galleryDialog.open) galleryDialog.showModal();
 }
 
 async function loadLatestRelease() {
@@ -125,5 +187,11 @@ async function loadLatestRelease() {
 }
 
 languageButtons.forEach((button) => { button.addEventListener("click", () => applyLanguage(button.dataset.language, true)); });
+galleryOpenButton.addEventListener("click", openGallery);
+galleryPreviousButton.addEventListener("click", () => selectScreenshot(-1));
+galleryNextButton.addEventListener("click", () => selectScreenshot(1));
+galleryDialogPreviousButton.addEventListener("click", () => selectScreenshot(-1));
+galleryDialogNextButton.addEventListener("click", () => selectScreenshot(1));
+galleryCloseButton.addEventListener("click", () => galleryDialog.close());
 applyLanguage(getInitialLanguage());
 loadLatestRelease();

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Capital OS is a local-first personal financial operating system for tracking net worth, assets, liabilities, and everyday finances."
+    />
+    <title>Capital OS — Your Personal Financial Operating System</title>
+    <link rel="icon" href="assets/capital-os-symbol.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Capital OS home">
+        <img src="assets/capital-os-symbol.png" alt="" width="36" height="36" />
+        <span>Capital OS</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#install">Install</a>
+        <a href="#screenshots">Screenshots</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">LOCAL-FIRST • WINDOWS BETA</p>
+          <h1>Your Personal Financial<br /><span>Operating System.</span></h1>
+          <p class="hero-description">
+            See what you own, what you owe, and how your financial life changes over time —
+            without handing your data to a cloud service.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary is-loading" id="download-button" href="#install" aria-disabled="true">
+              <span class="button-icon" aria-hidden="true">↓</span>
+              <span id="download-label">Checking latest release…</span>
+            </a>
+            <a class="button button-secondary" href="#features">Explore features</a>
+          </div>
+          <p class="release-status" id="release-status" role="status" aria-live="polite">
+            Connecting to the official release channel…
+          </p>
+        </div>
+
+        <div class="hero-preview" aria-label="Capital OS application preview">
+          <div class="preview-window">
+            <div class="preview-titlebar"><span></span><span></span><span></span></div>
+            <div class="preview-content">
+              <aside class="preview-sidebar">
+                <img src="assets/capital-os-symbol.png" alt="" />
+                <i></i><i></i><i></i><i></i>
+              </aside>
+              <div class="preview-dashboard">
+                <div class="preview-heading"><b>Overview</b><em>October 2026</em></div>
+                <div class="metric-row">
+                  <div><small>Net worth</small><strong>$428,560</strong></div>
+                  <div><small>Monthly flow</small><strong class="positive">+$4,820</strong></div>
+                </div>
+                <div class="chart" aria-hidden="true"><svg viewBox="0 0 460 180"><path d="M0 148 C55 145 64 91 111 105 S169 144 214 99 S272 115 317 63 S405 75 460 19" /></svg></div>
+                <div class="preview-lines"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </div>
+          <p>Built for clarity, not complexity.</p>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Product principles">
+        <div><b>Local data</b><span>Your data stays on your computer</span></div>
+        <div><b>One clear picture</b><span>Capital and cash flow, side by side</span></div>
+        <div><b>Built to evolve</b><span>Updates arrive through the app</span></div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-intro">
+          <p class="eyebrow">THE FOUNDATION</p>
+          <h2>Everything you need to understand your money.</h2>
+          <p>Capital OS brings long-term wealth tracking and everyday personal finance into one focused desktop application.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-icon">◎</span><h3>Net Worth Tracking</h3><p>Track the value of your full financial picture over time.</p></article>
+          <article class="feature-card"><span class="feature-icon">◇</span><h3>Assets &amp; Liabilities</h3><p>Keep property, vehicles, accounts, debts, and other objects in one place.</p></article>
+          <article class="feature-card"><span class="feature-icon">↗</span><h3>Historical Snapshots</h3><p>See how your capital changed, with a clear history you can revisit.</p></article>
+          <article class="feature-card"><span class="feature-icon">▦</span><h3>Finance Management</h3><p>Manage accounts, transactions, budgets, goals, and recurring payments.</p></article>
+          <article class="feature-card"><span class="feature-icon">⇩</span><h3>Excel Import</h3><p>Bring historical financial data into a structured, reviewable workspace.</p></article>
+          <article class="feature-card"><span class="feature-icon">⊞</span><h3>Customizable Workspace</h3><p>Arrange the information that matters most to you.</p></article>
+        </div>
+      </section>
+
+      <section class="section screenshots" id="screenshots">
+        <div class="section-intro">
+          <p class="eyebrow">A CLOSER LOOK</p>
+          <h2>Designed for a calm financial review.</h2>
+          <p>Product screenshots will be added here as the beta evolves.</p>
+        </div>
+        <div class="screenshot-grid" aria-label="Screenshot placeholders">
+          <div class="screenshot-slot"><span>01</span><b>Capital overview</b><small>Screenshot coming soon</small></div>
+          <div class="screenshot-slot"><span>02</span><b>Finance workspace</b><small>Screenshot coming soon</small></div>
+          <div class="screenshot-slot"><span>03</span><b>Historical view</b><small>Screenshot coming soon</small></div>
+        </div>
+      </section>
+
+      <section class="section install" id="install">
+        <div class="install-card">
+          <div>
+            <p class="eyebrow">WINDOWS BETA</p>
+            <h2>Start with your own financial system.</h2>
+            <p id="install-version">The latest beta will appear here when the release channel is available.</p>
+          </div>
+          <a class="button button-primary is-loading" id="install-download-button" href="#install" aria-disabled="true">
+            <span class="button-icon" aria-hidden="true">↓</span>
+            <span id="install-download-label">Checking latest release…</span>
+          </a>
+        </div>
+
+        <div class="install-guide">
+          <div><span>1</span><h3>Download</h3><p>Download the latest Windows installer from the official release channel.</p></div>
+          <div><span>2</span><h3>Install</h3><p>Run the installer and follow the Windows prompts. Your existing data is kept in its current location.</p></div>
+          <div><span>3</span><h3>Open Capital OS</h3><p>Create a test Capital first if you are evaluating the beta.</p></div>
+        </div>
+        <p class="unsigned-note"><strong>Beta notice:</strong> the installer is not yet Authenticode-signed by Windows. Windows may show a reputation warning. Download only from this official page or the linked GitHub Release.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#top"><img src="assets/capital-os-symbol.png" alt="" width="28" height="28" /><span>Capital OS</span></a>
+      <p>Local-first personal finance for Windows.</p>
+      <a class="bug-link" href="https://github.com/hesouam999-source/capital-os-updates/issues/new" target="_blank" rel="noreferrer">Report a bug <span aria-hidden="true">↗</span></a>
+    </footer>
+  </body>
+</html>

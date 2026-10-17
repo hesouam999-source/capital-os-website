@@ -38,6 +38,10 @@ a { color: inherit; }
 nav { display: flex; gap: var(--space-3); }
 nav a, .bug-link { color: var(--muted-strong); font-size: 0.9rem; text-decoration: none; }
 nav a:hover, .bug-link:hover { color: var(--accent-strong); }
+.language-switcher { align-items: center; color: var(--muted); display: inline-flex; font-size: 0.72rem; gap: 5px; letter-spacing: 0.08em; }
+.language-button { background: transparent; border: 0; border-radius: 7px; color: var(--muted); cursor: pointer; font: inherit; font-weight: 750; min-height: 30px; padding: 4px 6px; }
+.language-button[aria-pressed="true"] { color: var(--accent-strong); background: rgb(139 211 178 / 0.12); }
+.language-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .hero, .section { width: min(calc(100% - 48px), var(--content)); margin: auto; }
 .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(390px, 0.95fr); gap: clamp(40px, 7vw, 96px); align-items: center; padding: clamp(56px, 10vw, 120px) 0 var(--space-6); }
 .eyebrow { color: var(--accent); font-size: 0.74rem; font-weight: 750; letter-spacing: 0.12em; margin: 0 0 var(--space-2); }
@@ -117,6 +121,8 @@ h2 { max-width: 740px; font-size: clamp(2rem, 3.7vw, 3.4rem); letter-spacing: -0
 .site-footer p { color: var(--muted); font-size: 0.85rem; margin: 0 auto 0 0; }
 
 @media (max-width: 840px) {
+  .site-header { flex-wrap: wrap; padding: 16px 0; }
+  .language-switcher { margin-left: auto; }
   .hero { grid-template-columns: 1fr; padding-top: 64px; }
   .hero-preview { max-width: 580px; width: 100%; }
   .feature-grid, .screenshot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -124,7 +130,8 @@ h2 { max-width: 740px; font-size: clamp(2rem, 3.7vw, 3.4rem); letter-spacing: -0
 }
 @media (max-width: 580px) {
   .site-header, .site-footer, .hero, .section { width: min(calc(100% - 32px), var(--content)); }
-  .site-header { min-height: 72px; }
+  .site-header { min-height: 72px; gap: 8px 14px; }
+  .site-header nav { order: 3; width: 100%; }
   nav { gap: 14px; }
   nav a { font-size: 0.78rem; }
   .hero { padding-bottom: 64px; }

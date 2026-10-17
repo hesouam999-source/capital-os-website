@@ -6,6 +6,7 @@ const translations = {
   en: {
     pageTitle: "Capital OS — Your Personal Financial Operating System",
     metaDescription: "Capital OS is a local-first personal financial operating system for tracking net worth, assets, liabilities, and everyday finances.",
+    socialLocale: "en_US",
     skipToContent: "Skip to content", homeAria: "Capital OS home", mainNavigation: "Main navigation", languageSelector: "Language selector",
     navFeatures: "Features", navInstall: "Install", navScreenshots: "Screenshots", supportNav: "Support", heroEyebrow: "LOCAL-FIRST • WINDOWS BETA",
     heroTitleFirst: "Your Personal Financial", heroTitleSecond: "Operating System.",
@@ -24,6 +25,7 @@ const translations = {
   ru: {
     pageTitle: "Capital OS — Ваша персональная финансовая ОС",
     metaDescription: "Capital OS — локальная персональная финансовая система для учёта капитала, активов, обязательств и ежедневных финансов.",
+    socialLocale: "ru_RU",
     skipToContent: "Перейти к содержимому", homeAria: "Главная Capital OS", mainNavigation: "Основная навигация", languageSelector: "Выбор языка",
     navFeatures: "Возможности", navInstall: "Установка", navScreenshots: "Скриншоты", supportNav: "Поддержать", heroEyebrow: "ЛОКАЛЬНЫЕ ДАННЫЕ • WINDOWS BETA",
     heroTitleFirst: "Ваша персональная", heroTitleSecond: "финансовая ОС.",
@@ -125,6 +127,13 @@ function applyLanguage(language, persist = false) {
   document.documentElement.lang = currentLanguage;
   document.title = t("pageTitle");
   document.querySelector('meta[name="description"]').content = t("metaDescription");
+  document.querySelector('meta[property="og:title"]').content = t("pageTitle");
+  document.querySelector('meta[property="og:description"]').content = t("metaDescription");
+  document.querySelector('meta[property="og:locale"]').content = t("socialLocale");
+  document.querySelector('meta[property="og:image:alt"]').content = t("heroBannerAlt");
+  document.querySelector('meta[name="twitter:title"]').content = t("pageTitle");
+  document.querySelector('meta[name="twitter:description"]').content = t("metaDescription");
+  document.querySelector('meta[name="twitter:image:alt"]').content = t("heroBannerAlt");
   document.querySelectorAll("[data-i18n]").forEach((element) => { element.textContent = t(element.dataset.i18n); });
   document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => { element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel)); });
   document.querySelectorAll("[data-i18n-alt]").forEach((element) => { element.alt = t(element.dataset.i18nAlt); });

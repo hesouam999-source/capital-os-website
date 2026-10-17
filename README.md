@@ -21,3 +21,9 @@ the repository's **Settings → Pages**, choose **GitHub Actions** as the source
 The workflow requires no secrets and publishes only this static site.
 
 No changes are required in the private `capital-os` application repository or the `capital-os-updates` repository.
+
+## Google Search Console
+
+The public site exposes a canonical URL, `robots.txt`, and `sitemap.xml` at the repository's GitHub Pages URL. To connect Google Search Console, add the URL-prefix property `https://hesouam999-source.github.io/capital-os-website/`, complete ownership verification in Google Search Console, then submit `https://hesouam999-source.github.io/capital-os-website/sitemap.xml` in **Sitemaps**. Use **URL Inspection** to test the live page and request indexing after material changes.
+
+No Search Console verification token is stored in this repository. Add an ownership-specific verification tag or file only after it is generated for the owner's Search Console property.

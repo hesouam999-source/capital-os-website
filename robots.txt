@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hesouam999-source.github.io/capital-os-website/sitemap.xml
+Sitemap: https://mycapitalos.com/sitemap.xml

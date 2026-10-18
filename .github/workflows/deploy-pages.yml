@@ -24,6 +24,16 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Configure optional Google Analytics 4
+        env:
+          GA4_MEASUREMENT_ID: ${{ vars.GA4_MEASUREMENT_ID }}
+        run: |
+          if [[ "$GA4_MEASUREMENT_ID" =~ ^G-[A-Z0-9]+$ ]]; then
+            printf 'window.CapitalOSAnalyticsConfig = { measurementId: "%s" };\n' "$GA4_MEASUREMENT_ID" > analytics-config.js
+          else
+            printf 'window.CapitalOSAnalyticsConfig = { measurementId: "" };\n' > analytics-config.js
+          fi
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:

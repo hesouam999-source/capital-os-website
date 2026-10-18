@@ -19,8 +19,9 @@
     <meta property="og:description" content="Capital OS is a local-first personal financial operating system for tracking net worth, assets, liabilities, and everyday finances." />
     <meta property="og:url" content="https://mycapitalos.com/" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://mycapitalos.com/assets/hero-banner.webp" />
-    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+    <meta property="og:image" content="https://mycapitalos.com/assets/hero-dashboard.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1672" />
     <meta property="og:image:height" content="941" />
     <meta property="og:image:alt" content="Capital OS product overview" />
@@ -28,7 +29,7 @@
     <meta name="twitter:title" content="Capital OS — Your Personal Financial Operating System" />
     <meta name="twitter:description" content="Capital OS is a local-first personal financial operating system for tracking net worth, assets, liabilities, and everyday finances." />
     <meta name="twitter:url" content="https://mycapitalos.com/" />
-    <meta name="twitter:image" content="https://mycapitalos.com/assets/hero-banner.webp" />
+    <meta name="twitter:image" content="https://mycapitalos.com/assets/hero-dashboard.png" />
     <meta name="twitter:image:alt" content="Capital OS product overview" />
     <link rel="icon" type="image/png" href="assets/capital-os-symbol.png" />
     <link rel="apple-touch-icon" href="assets/capital-os-symbol.png" />
@@ -36,16 +37,19 @@
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
+        "@id": "https://mycapitalos.com/#software",
         "name": "Capital OS",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Windows",
         "description": "Capital OS is a local-first personal financial operating system for tracking net worth, assets, liabilities, and everyday finances.",
         "url": "https://mycapitalos.com/",
+        "isAccessibleForFree": true,
         "downloadUrl": "https://github.com/hesouam999-source/capital-os-updates/releases/latest",
-        "image": "https://mycapitalos.com/assets/hero-banner.webp"
+        "image": "https://mycapitalos.com/assets/hero-dashboard.png"
       }
     </script>
     <link rel="stylesheet" href="styles.css" />
+    <script src="analytics-config.js"></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -181,6 +185,14 @@
       <p data-i18n="footerDescription">Local-first personal finance for Windows.</p>
       <a class="bug-link" href="https://github.com/hesouam999-source/capital-os-updates/issues/new" target="_blank" rel="noreferrer"><span data-i18n="reportBug">Report a bug</span> <span aria-hidden="true">↗</span></a>
     </footer>
+
+    <aside class="analytics-consent" id="analytics-consent" hidden aria-live="polite">
+      <p id="analytics-consent-text" data-i18n="analyticsConsentText">Help us understand which pages and download links are useful. Analytics never receives your financial data.</p>
+      <div class="analytics-consent-actions">
+        <button class="analytics-consent-button analytics-consent-secondary" id="analytics-decline" type="button" data-i18n="analyticsDecline">Essential only</button>
+        <button class="analytics-consent-button analytics-consent-primary" id="analytics-accept" type="button" data-i18n="analyticsAccept">Accept analytics</button>
+      </div>
+    </aside>
 
     <dialog class="gallery-dialog" id="gallery-dialog" aria-labelledby="gallery-dialog-title">
       <div class="gallery-dialog-content">

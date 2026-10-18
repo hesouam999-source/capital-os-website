@@ -1,6 +1,9 @@
 const releaseApi = "https://api.github.com/repos/hesouam999-source/capital-os-updates/releases/latest";
 const releasePage = "https://github.com/hesouam999-source/capital-os-updates/releases/latest";
 const languageStorageKey = "capital-os-website-language";
+const analyticsConsentStorageKey = "capital-os-website-analytics-consent";
+const analyticsMeasurementId = window.CapitalOSAnalyticsConfig?.measurementId || "";
+let analyticsInitialized = false;
 
 const translations = {
   en: {
@@ -21,6 +24,7 @@ const translations = {
     supportEyebrow: "SUPPORT CAPITAL OS", supportTitle: "Help us build a better Capital OS.", supportText: "Your support helps us keep improving this local-first financial workspace.", supportButton: "❤️ Support Development",
     windowsBeta: "WINDOWS BETA", installTitle: "Start with your own financial system.", installVersionLoading: "The latest beta will appear here when the release channel is available.", guideDownloadTitle: "Download", guideDownloadText: "Download the latest Windows installer from the official release channel.", guideInstallTitle: "Install", guideInstallText: "Run the installer and follow the Windows prompts. Your existing data is kept in its current location.", guideOpenTitle: "Open Capital OS", guideOpenText: "Create a test Capital first if you are evaluating the beta.", betaNoticeTitle: "Beta notice:", betaNoticeText: "the installer is not yet Authenticode-signed by Windows. Windows may show a reputation warning. Download only from this official page or the linked GitHub Release.", footerDescription: "Local-first personal finance for Windows.", reportBug: "Report a bug",
     downloadForWindows: "Download for Windows", downloadAria: "Download Capital OS {version} for Windows", latestRelease: "Latest public beta: v{version} · Windows x64", currentRelease: "Current public beta: v{version} for Windows x64.", viewDownloads: "View Windows downloads", releaseLoadError: "The latest version could not be loaded. Open the official releases page to download it.", releaseInstallError: "Open the official release page to choose the latest Windows installer.",
+    analyticsConsentText: "Help us understand which pages and download links are useful. Analytics never receives your financial data.", analyticsAccept: "Accept analytics", analyticsDecline: "Essential only",
   },
   ru: {
     pageTitle: "Capital OS — Ваша персональная финансовая ОС",
@@ -40,6 +44,7 @@ const translations = {
     supportEyebrow: "ПОДДЕРЖКА CAPITAL OS", supportTitle: "Помогите нам сделать Capital OS лучше.", supportText: "Ваша поддержка помогает развивать локальное финансовое рабочее пространство.", supportButton: "❤️ Поддержать разработку",
     windowsBeta: "WINDOWS BETA", installTitle: "Начните со своей финансовой системы.", installVersionLoading: "Последняя бета появится здесь, когда будет доступен канал релизов.", guideDownloadTitle: "Скачать", guideDownloadText: "Скачайте последнюю версию установщика Windows из официального канала релизов.", guideInstallTitle: "Установить", guideInstallText: "Запустите установщик и следуйте подсказкам Windows. Существующие данные останутся на прежнем месте.", guideOpenTitle: "Открыть Capital OS", guideOpenText: "Для знакомства с бета-версией сначала создайте тестовый Capital.", betaNoticeTitle: "Бета-версия:", betaNoticeText: "у установщика пока нет подписи Windows Authenticode. Windows может показать предупреждение репутации. Скачивайте программу только с этой официальной страницы или по ссылке на GitHub Release.", footerDescription: "Локальная персональная финансовая система для Windows.", reportBug: "Сообщить об ошибке",
     downloadForWindows: "Скачать для Windows", downloadAria: "Скачать Capital OS {version} для Windows", latestRelease: "Последняя публичная бета: v{version} · Windows x64", currentRelease: "Текущая публичная бета: v{version} для Windows x64.", viewDownloads: "Открыть загрузки для Windows", releaseLoadError: "Не удалось загрузить последнюю версию. Откройте официальную страницу релизов, чтобы скачать её.", releaseInstallError: "Откройте официальную страницу релизов и выберите последнюю версию установщика Windows.",
+    analyticsConsentText: "Помогите понять, какие страницы и ссылки на скачивание полезны. Аналитика никогда не получает ваши финансовые данные.", analyticsAccept: "Разрешить аналитику", analyticsDecline: "Только необходимое",
   },
 };
 
@@ -64,6 +69,9 @@ const galleryDialogDescription = document.querySelector("#gallery-dialog-descrip
 const galleryCloseButton = document.querySelector("#gallery-close");
 const galleryDialogPreviousButton = document.querySelector("#gallery-dialog-previous");
 const galleryDialogNextButton = document.querySelector("#gallery-dialog-next");
+const analyticsConsent = document.querySelector("#analytics-consent");
+const analyticsAcceptButton = document.querySelector("#analytics-accept");
+const analyticsDeclineButton = document.querySelector("#analytics-decline");
 const screenshots = [
   { file: "dashboard.webp", title: "galleryDashboardTitle", description: "galleryDashboardText" },
   { file: "objects.webp", title: "galleryObjectsTitle", description: "galleryObjectsText" },
@@ -97,6 +105,47 @@ function setDownloadLink(button, label, url, version) {
   button.classList.remove("is-loading");
   label.textContent = t("downloadForWindows");
   button.setAttribute("aria-label", t("downloadAria", { version }));
+}
+
+function getAnalyticsConsent() {
+  try { return localStorage.getItem(analyticsConsentStorageKey); } catch { return null; }
+}
+
+function saveAnalyticsConsent(value) {
+  try { localStorage.setItem(analyticsConsentStorageKey, value); } catch { /* Consent stays session-only when storage is unavailable. */ }
+}
+
+function initializeAnalytics() {
+  if (analyticsInitialized || !analyticsMeasurementId) return;
+  analyticsInitialized = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", analyticsMeasurementId, { anonymize_ip: true });
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsMeasurementId)}`;
+  document.head.append(script);
+}
+
+function trackWindowsDownload(button) {
+  if (!analyticsInitialized || !window.gtag || releaseState.type !== "ready") return;
+  window.gtag("event", "download_windows", {
+    event_category: "engagement",
+    event_label: "windows_installer",
+    version: releaseState.version,
+    placement: button.id === "download-button" ? "hero" : "install",
+  });
+}
+
+function configureAnalyticsConsent() {
+  if (!analyticsMeasurementId) return;
+  const consent = getAnalyticsConsent();
+  if (consent === "granted") {
+    initializeAnalytics();
+    return;
+  }
+  if (consent !== "denied") analyticsConsent.hidden = false;
 }
 
 function renderReleaseState() {
@@ -197,6 +246,9 @@ async function loadLatestRelease() {
 }
 
 languageButtons.forEach((button) => { button.addEventListener("click", () => applyLanguage(button.dataset.language, true)); });
+analyticsAcceptButton.addEventListener("click", () => { saveAnalyticsConsent("granted"); analyticsConsent.hidden = true; initializeAnalytics(); });
+analyticsDeclineButton.addEventListener("click", () => { saveAnalyticsConsent("denied"); analyticsConsent.hidden = true; });
+[primaryButton, installButton].forEach((button) => button.addEventListener("click", () => trackWindowsDownload(button)));
 galleryOpenButton.addEventListener("click", openGallery);
 galleryPreviousButton.addEventListener("click", () => selectScreenshot(-1));
 galleryNextButton.addEventListener("click", () => selectScreenshot(1));
@@ -204,4 +256,5 @@ galleryDialogPreviousButton.addEventListener("click", () => selectScreenshot(-1)
 galleryDialogNextButton.addEventListener("click", () => selectScreenshot(1));
 galleryCloseButton.addEventListener("click", () => galleryDialog.close());
 applyLanguage(getInitialLanguage());
+configureAnalyticsConsent();
 loadLatestRelease();

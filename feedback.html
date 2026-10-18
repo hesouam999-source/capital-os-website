@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Send feedback · Capital OS</title>
+    <meta name="description" content="Send private beta feedback to the Capital OS team." />
+    <link rel="icon" href="assets/capital-os-symbol.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="feedback-config.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script type="module" src="feedback.js"></script>
+  </head>
+  <body class="feedback-page">
+    <main class="feedback-shell">
+      <a class="feedback-back" href="index.html">← Back to Capital OS</a>
+      <section class="feedback-card" aria-labelledby="feedback-title">
+        <p class="eyebrow">PUBLIC BETA FEEDBACK</p>
+        <h1 id="feedback-title">Help improve Capital OS</h1>
+        <p class="feedback-intro">Send a bug report, UX note, feature request, or question directly to the private beta triage queue. A GitHub account is not required.</p>
+        <div class="feedback-privacy" role="note">
+          <strong>Keep your data private.</strong> Do not include balances, transactions, account numbers, passwords, API keys, SQLite databases, backups, or exports. Screenshots are optional and stored privately for up to 90 days.
+        </div>
+
+        <form id="feedback-form" novalidate>
+          <div class="feedback-field-grid">
+            <label>Feedback type
+              <select id="feedback-type" name="type" required>
+                <option value="bug">Bug</option>
+                <option value="ux">UX problem</option>
+                <option value="feature">Feature request</option>
+                <option value="question">Question</option>
+              </select>
+            </label>
+            <label>Capital OS version <span class="optional">optional</span>
+              <input id="feedback-version" name="appVersion" maxlength="40" autocomplete="off" placeholder="For example, 0.0.69" />
+            </label>
+          </div>
+          <label>Short title
+            <input name="title" minlength="5" maxlength="120" required placeholder="What happened?" />
+          </label>
+          <label>What would you like us to know?
+            <textarea name="message" minlength="20" maxlength="5000" required rows="8" placeholder="Describe the issue, expected behavior, and safe steps to reproduce. Never include financial or account data."></textarea>
+          </label>
+          <label>Contact email <span class="optional">optional</span>
+            <input name="email" type="email" maxlength="254" autocomplete="email" placeholder="name@example.com" />
+          </label>
+          <label>Screenshot <span class="optional">optional · PNG, JPEG, or WebP · 5 MB maximum</span>
+            <input name="screenshot" type="file" accept="image/png,image/jpeg,image/webp" />
+          </label>
+          <input class="feedback-honeypot" name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input id="feedback-source" name="source" type="hidden" value="web" />
+          <label class="feedback-consent">
+            <input name="consent" type="checkbox" value="yes" required />
+            <span>I confirm that I am not sending financial data, SQLite databases, backups, credentials, or other sensitive information. I consent to this report being stored privately for up to 90 days.</span>
+          </label>
+          <div id="turnstile-container" class="turnstile-container" aria-label="Spam protection"></div>
+          <p id="feedback-status" class="feedback-status" role="status" aria-live="polite"></p>
+          <button id="feedback-submit" class="button button-primary" type="submit">Send private feedback</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

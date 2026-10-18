@@ -34,6 +34,17 @@ jobs:
             printf 'window.CapitalOSAnalyticsConfig = { measurementId: "" };\n' > analytics-config.js
           fi
 
+      - name: Configure optional private feedback form
+        env:
+          FEEDBACK_ENDPOINT: ${{ vars.FEEDBACK_ENDPOINT }}
+          TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
+        run: |
+          if [[ "$FEEDBACK_ENDPOINT" == "https://capital-os-feedback.hesouam999.workers.dev/v1/feedback" && "$TURNSTILE_SITE_KEY" == "0x4AAAAAAFaj57TEqV5urBoS" ]]; then
+            printf 'window.CapitalOSFeedbackConfig = { endpoint: "%s", turnstileSiteKey: "%s" };\n' "$FEEDBACK_ENDPOINT" "$TURNSTILE_SITE_KEY" > feedback-config.js
+          else
+            printf 'window.CapitalOSFeedbackConfig = { endpoint: "", turnstileSiteKey: "" };\n' > feedback-config.js
+          fi
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:

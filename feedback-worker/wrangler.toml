@@ -1,0 +1,35 @@
+name = "capital-os-feedback"
+main = "src/index.js"
+compatibility_date = "2026-10-18"
+
+# This identifier is not a credential. All secrets remain outside the repository.
+[[d1_databases]]
+binding = "FEEDBACK_DB"
+database_name = "capital-os-feedback"
+database_id = "6bf2ea25-81ab-4d9e-86b8-9f9c8d6214e2"
+
+[[r2_buckets]]
+binding = "FEEDBACK_SCREENSHOTS"
+bucket_name = "capital-os-feedback-screenshots"
+
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "FeedbackRateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["FeedbackRateLimiter"]
+
+[triggers]
+crons = ["0 */6 * * *"]
+
+[vars]
+ALLOWED_ORIGIN = "https://mycapitalos.com"
+TURNSTILE_EXPECTED_HOSTNAME = "mycapitalos.com"
+GITHUB_OWNER = "hesouam999-source"
+GITHUB_REPOSITORY = "capital-os-feedback"
+GITHUB_APP_ID = "5371943"
+GITHUB_APP_INSTALLATION_ID = "172802645"
+
+# Set only through `wrangler secret put`; never add secret values here:
+# TURNSTILE_SECRET_KEY, GITHUB_APP_PRIVATE_KEY, IP_HASH_PEPPER

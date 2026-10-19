@@ -224,11 +224,14 @@ h2 { max-width: 740px; font-size: clamp(2rem, 3.7vw, 3.4rem); letter-spacing: -0
 }
 
 /* Compact Excel-import banner — aligned with existing support panel */
-.excel-migration { margin-block: 24px 42px; }
-.excel-migration-card { display:flex; align-items:center; justify-content:space-between; gap:32px; padding:clamp(24px,3.3vw,46px); border:1px solid rgb(139 211 178 / .35); border-radius:var(--radius-lg); background:linear-gradient(115deg, rgb(28 46 47 / .88), rgb(21 32 48 / .96)); }
+.excel-migration { margin-block: 0 12px; padding-block: 0; }
+.excel-migration-card { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:clamp(17px,2.2vw,28px); border:1px solid rgb(139 211 178 / .35); border-radius:var(--radius-lg); background:linear-gradient(115deg, rgb(28 46 47 / .88), rgb(21 32 48 / .96)); }
 .excel-migration-copy { min-width:0; }
-.excel-migration-copy .eyebrow { margin-bottom:12px; }
-.excel-migration-copy h2 { font-size:clamp(1.4rem,2.35vw,2.25rem); line-height:1.17; margin-bottom:12px; letter-spacing:-.045em; max-width:740px; }
-.excel-migration-copy p:last-child { font-size:clamp(.95rem,1.2vw,1.06rem); color:var(--muted-strong); max-width:760px; line-height:1.55; margin:0; }
+.excel-migration-copy .eyebrow { margin-bottom:6px; }
+.excel-migration-copy h2 { font-size:clamp(1.3rem,2vw,1.9rem); line-height:1.2; margin-bottom:7px; letter-spacing:-.045em; max-width:740px; }
+.excel-migration-copy p:last-child { font-size:clamp(.9rem,1.1vw,1rem); color:var(--muted-strong); max-width:760px; line-height:1.55; margin:0; }
 .excel-migration-link { flex:none; white-space:nowrap; padding-inline:24px; }
-@media(max-width:800px){.excel-migration-card{align-items:flex-start;flex-direction:column;gap:22px}.excel-migration-link{width:100%;white-space:normal;text-align:center}}
+@media(max-width:800px){.excel-migration-card{align-items:flex-start;flex-direction:column;gap:14px}.excel-migration-link{width:100%;white-space:normal;text-align:center}}
+
+#features { padding-bottom: 16px; }
+#excel-migration + #screenshots { padding-top: 16px; }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Move years of capital history from Excel into Capital OS with a structured, reviewable import." />
+    <meta name="theme-color" content="#0b1017" />
+    <title>Excel Import — Capital OS</title>
+    <link rel="canonical" href="https://mycapitalos.com/import/excel/" />
+    <link rel="icon" type="image/png" href="../../assets/capital-os-symbol.png" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="import-excel.css" />
+    <script src="import-excel.js" defer></script>
+  </head>
+  <body class="excel-import-page">
+    <a class="skip-link" href="#main-content" data-i18n="skip">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="../../" data-i18n-aria-label="homeAria"><img src="../../assets/capital-os-symbol.png" alt="" width="36" height="36" /><span>Capital OS</span></a>
+      <nav aria-label="Main navigation" data-i18n-aria-label="navAria"><a href="../../" data-i18n="navHome">Home</a><a class="nav-excel" href="./" aria-current="page" data-i18n="navExcel">Excel Import</a></nav>
+      <div class="language-switcher" aria-label="Language selector" data-i18n-aria-label="languageAria"><button class="language-button" type="button" data-language="en" aria-pressed="true">EN</button><span aria-hidden="true">/</span><button class="language-button" type="button" data-language="ru" aria-pressed="false">RU</button></div>
+    </header>
+    <main id="main-content">
+      <section class="excel-hero">
+        <p class="eyebrow" data-i18n="eyebrow">EXCEL IMPORT</p>
+        <h1 data-i18n="title">Your Excel history belongs in <span>Capital OS.</span></h1>
+        <p class="hero-description" data-i18n="intro">Bring years of capital history from Excel into Capital OS while preserving assets, liabilities, currencies, and historical snapshots.</p>
+        <a class="button button-primary" href="#steps" data-i18n="start">See the three steps <span aria-hidden="true">↓</span></a>
+        <p class="excel-note" data-i18n="heroNote">Your original workbook remains unchanged. Review the converted file before importing.</p>
+      </section>
+      <section class="excel-benefits" aria-label="What moves with you" data-i18n-aria-label="benefitsAria"><article><span>◷</span><h2 data-i18n="benefitHistoryTitle">Keep your history</h2><p data-i18n="benefitHistoryText">Carry forward dated snapshots instead of starting from zero.</p></article><article><span>▦</span><h2 data-i18n="benefitAssetsTitle">Keep the full picture</h2><p data-i18n="benefitAssetsText">Assets, liabilities, currencies, and values stay structured.</p></article><article><span>✓</span><h2 data-i18n="benefitReviewTitle">Review before import</h2><p data-i18n="benefitReviewText">Check totals and dates before anything reaches Capital OS.</p></article></section>
+      <section class="section excel-steps" id="steps">
+        <div class="section-intro"><p class="eyebrow" data-i18n="stepsEyebrow">A SIMPLE, GUIDED IMPORT</p><h2 data-i18n="stepsTitle">Your Excel → AI → Capital OS.</h2><p data-i18n="stepsIntro">Use an AI assistant to prepare a separate import workbook. No changes are made to your original file.</p></div>
+        <ol class="step-list">
+          <li><div class="step-number">1</div><div><p class="step-label" data-i18n="step1Label">STEP 1</p><h2 data-i18n="step1Title">Download two files</h2><p data-i18n="step1Text">These files give an AI the exact rules and reference structure for a Capital OS import.</p><div class="download-grid"><a class="download-card" href="CAPITAL_OS_AI_CONVERTER_PROMPT.txt" download><span>📄</span><strong data-i18n="instructionsName">AI Conversion Instructions</strong><small>.txt</small><b data-i18n="download">Download</b></a><a class="download-card" href="CAPITAL_OS_AI_CONVERSION_EXAMPLE.xlsx" download><span>📊</span><strong data-i18n="exampleName">Capital OS Example</strong><small>.xlsx</small><b data-i18n="download">Download</b></a></div></div></li>
+          <li><div class="step-number">2</div><div><p class="step-label" data-i18n="step2Label">STEP 2</p><h2 data-i18n="step2Title">Open ChatGPT, Claude, or another AI</h2><p data-i18n="step2Text">Upload three files: your Excel workbook and both downloads from Step 1. Then send this request.</p><div class="ai-request"><div><span data-i18n="requestHeading">Ready-to-copy AI request</span><button id="copy-request" type="button" data-i18n="copy">Copy request</button></div><pre id="ai-request-text">I want to move my capital history from my Excel file to Capital OS.&#10;&#10;I attached 3 files:&#10;1. My original Excel workbook with my financial data.&#10;2. CAPITAL_OS_AI_CONVERTER_PROMPT.txt — the conversion rules.&#10;3. CAPITAL_OS_AI_CONVERSION_EXAMPLE.xlsx — the required format.&#10;&#10;Please follow the instructions file, use the example as a structural reference, and create a NEW .xlsx file ready for “Import Capital OS”. Do not change my original file. If any dates, currencies, balances, or liabilities are unclear, ask me before guessing. Check the new workbook and tell me what was imported.</pre></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p><details class="technical-instructions"><summary data-i18n="showInstructions">Show complete AI conversion instructions</summary><p data-i18n="instructionsHint">These instructions are in English and are intended for the AI, not for manual editing.</p><iframe class="instructions-frame" src="CAPITAL_OS_AI_CONVERTER_PROMPT.txt" title="Capital OS AI conversion instructions"></iframe></details><aside class="privacy-warning"><strong data-i18n="privacyTitle">Privacy and accuracy notice</strong><p data-i18n="privacyText">Your workbook can contain sensitive financial information. Review the privacy settings of the AI service before uploading a copy. AI can misunderstand formulas, currencies, or missing values, so verify the converted workbook carefully.</p></aside></div></li>
+          <li><div class="step-number">3</div><div><p class="step-label" data-i18n="step3Label">STEP 3</p><h2 data-i18n="step3Title">Import into Capital OS</h2><p data-i18n="step3Text">Download the converted Excel file. Check the totals and dates, then open Capital OS and choose:</p><p class="import-path">Capital OS → Import Capital OS</p><p data-i18n="step3Final">Only complete the import when the preview matches the important values in your original workbook.</p></div></li>
+        </ol>
+      </section>
+    </main>
+    <footer class="site-footer"><a class="brand" href="../../" data-i18n-aria-label="homeAria"><img src="../../assets/capital-os-symbol.png" alt="" width="28" height="28" /><span>Capital OS</span></a><p data-i18n="footer">Local-first personal finance for Windows.</p><a class="bug-link" href="../../feedback.html" data-i18n="feedback">Send feedback ↗</a></footer>
+  </body>
+</html>

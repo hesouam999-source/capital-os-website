@@ -1,0 +1,119 @@
+Capital OS — AI Instructions for Converting Any Excel Workbook
+
+TASK
+You will receive two Excel workbooks:
+1. SOURCE.xlsx — the user's existing financial workbook (its actual name can differ). It may contain many sheets, formulas, dashboards, budgets, transactions, and supporting calculations.
+2. CAPITAL_OS_AI_CONVERSION_EXAMPLE.xlsx — a reference workbook that has successfully imported via "Import Capital OS".
+Read the source, extract ONLY historical net-worth state by date, and create a NEW .xlsx matching the reference structure. Never modify the source file.
+
+CORE PRINCIPLE
+Transfer the answer to: "What did the user own or owe on each snapshot date, and what was it worth?"
+INCLUDE: snapshot dates; assets; bank and cash accounts; investments; property and vehicles; liabilities; confidently determined native currencies; cash flags; historical balances by date.
+EXCLUDE unless they are independent capital objects: income, expenses, budgets, savings rates, FI%, monthly changes, investment returns, contributions, debt payments, forecasts, dashboards, charts, intermediate calculations, and formulas that only produce analytics.
+
+WORKFLOW
+1. Examine every sheet, used range, heading, date, formula, repeated object name, asset and liability row/column, and Net Worth / Total Assets / Total Liabilities summary. Find the actual source of historical state, regardless of sheet titles.
+2. Build an internal mapping of permanent objects, categories, cash flags, currencies, snapshot dates, balances at each date, and liabilities. The same object MUST use one permanent UUID across ALL snapshots.
+3. Never guess. A blank cell is not automatically zero. Do not silently assume a currency, merge ambiguous objects, or reverse debt signs without evidence. If any detail is ambiguous, ask the user a short, specific question before generating the file.
+4. Generate a NEW workbook with at least two sheets named EXACTLY "Capital OS" and "_CapitalOS". The _CapitalOS metadata sheet is mandatory. Build fresh IDs, dates, amounts, JSON, and cell/range references for this user's data; NEVER copy these values from the example.
+
+VISIBLE SHEET: Capital OS
+A1 = Capital OS — net worth history
+A2 = Date; B2 = Net worth, USD; D2 = Date; E2 = Cash, USD
+Starting at row 3: A/B contain date and net worth in USD; D/E contain the same date and cash total in USD.
+Each snapshot needs a dated block with exactly eight data columns:
+Object | Category | Amount | Currency | USD exchange rate | Value USD | Cash | Ownership share
+Example rows:
+Checking | Счета и вклады | 2175 | USD | 1 | 2175 | Да | 1
+IRA | Инвестиции | 10000 | USD | 1 | 10000 | Нет | 1
+Mortgage | Обязательства | -50000 | USD | 1 | -50000 | Нет | 1
+IMPORTANT: Follow the reference workbook's exact visible-sheet layout, formatting conventions, and labels when generating these cells. Amount is the native-currency amount. USD exchange rate = USD per one native currency unit. Value USD = Amount × rate × ownership share. The cash field is exactly "Да" or "Нет". Ownership share 1 means 100%. Store liabilities as negative amounts. USD exchange rate is 1.
+
+METADATA SHEET: _CapitalOS
+A1=metadata_kind; B1=capital_os_round_trip
+A2=format_version; B2=1
+A3=app_version; B3=0.0.63
+A4=export_id; B4=<new unique export ID>
+A5=exported_at_unix_ms; B5=<current Unix time in milliseconds>
+A6=visible_sheet; B6=Capital OS
+Row 7 is blank.
+Row 8 headers, in exact order:
+entity_type | entity_id | parent_id | source_id | sort_order | visible_range | payload_json
+
+ENTITY: category
+Create a row for each category actually used. entity_id is the category name.
+payload_json example: {"name":"Инвестиции","is_system":0,"created_at":"<ISO timestamp>"}
+Use category names consistent with the reference and generated visible sheet.
+
+ENTITY: currency
+Create a row per used currency, with a 3-letter uppercase ISO 4217 code (USD, EUR, RUB, etc.).
+entity_id example: USD
+payload_json example: {"code":"USD"}
+
+ENTITY: object
+Create one new UUID for every permanent object. Use the SAME UUID across all snapshots for that object.
+payload_json example:
+{"id":"<OBJECT_UUID>","name":"Checking","category":"Счета и вклады","value_minor":184200,"currency_code":"USD","include_in_capital":1,"is_cash":1,"valuation_date":"2026-08-01","archived_at":null,"linked_object_id":null,"relationship_type":null,"ownership_percent":10000,"created_at":"<ISO timestamp>"}
+value_minor = the native amount × 100, rounded to an integer; negative for debts. ownership_percent=10000 is 100%. is_cash=1 only for qualifying cash/bank balances. include_in_capital=1 for normal objects. The object's CURRENT value should agree with the latest snapshot. Do not invent missing fields; follow the reference schema.
+
+ENTITY: snapshot
+Every historical date gets a unique snapshot ID.
+payload_json example:
+{"snapshot":{"base_currency_code":"USD","comment":"AI-converted from foreign workbook","created_at":"<ISO timestamp>","currency_context_json":null,"id":"<SNAPSHOT_ID>","is_manually_edited":0,"snapshot_date":"2021-01-01","total_value_minor":4048735,"updated_at":"<ISO timestamp>"},"visible_cells":{"analytics_capital":"B3","analytics_cash":"E3","date":"A74"}}
+snapshot_date = YYYY-MM-DD. total_value_minor = total net worth in base currency × 100, rounded to integer. visible_cells must point to actual cells in the NEW visible sheet. Metadata visible_range must point to the exact NEW snapshot block.
+
+ENTITY: snapshot_item
+Create a separate unique item UUID for each object's appearance in each snapshot.
+parent_id = existing snapshot ID; source_id = the permanent object UUID; visible_range = the actual row in the visible sheet.
+payload_json example:
+{"id":"<ITEM_UUID>","source_object_id":"<OBJECT_UUID>","name":"Checking","category":"Счета и вклады","value_minor":217500,"currency_code":"USD","ownership_percent":10000,"include_in_capital":1,"is_cash":1,"valuation_date":null,"linked_object_id":null,"relationship_type":null,"sort_order":0,"created_at":"<ISO timestamp>","updated_at":"<ISO timestamp>"}
+IMPORTANT: parent_id must reference a snapshot; source_object_id and metadata source_id must both reference the SAME permanent object UUID. value_minor must equal the visible native amount × 100. visible_range must precisely match the corresponding row.
+
+ENTITY: historical_fx
+REQUIRED for EVERY (snapshot, currency) combination, INCLUDING USD at rate 1.
+entity_type=historical_fx
+entity_id=<SNAPSHOT_ID>:<CURRENCY>
+parent_id=<SNAPSHOT_ID>
+payload_json example: {"currency_code":"USD","rate_to_usd":1}
+rate_to_usd = USD per 1 unit of native currency. Every snapshot_item MUST have a matching historical_fx entry for its snapshot and currency. Otherwise import fails with "Missing FX metadata".
+
+REFERENTIAL INTEGRITY
+Verify all snapshot_item.parent_id values refer to existing snapshots; every snapshot_item.source_object_id and metadata source_id refers to an existing object; all historical_fx.parent_id values refer to existing snapshots; all non-null linked_object_id values refer to existing objects; IDs are unique where required; one permanent object keeps one UUID across dates. No dangling references.
+
+AMOUNTS, SHARES, LIABILITIES
+All value_minor values are INTEGER minor units (e.g. $100 = 10000; $2,175.25 = 217525; -$50,000 = -5000000). Compute round(amount * 100); never serialize a float as value_minor.
+ownership_percent: 100% = 10000, 75% = 7500, 50% = 5000.
+Liabilities reduce net worth. Preserve an already-negative debt. Convert a positive number into a negative liability ONLY if the source clearly identifies it as a debt; otherwise ask.
+
+CASH
+is_cash=1 for cash holdings and balances intended to count toward liquid cash (commonly Checking, Savings, physical Cash).
+Typically NOT cash: IRA, 401(k), shares, brokerage investments, real estate, vehicles, liabilities. Ask if unclear.
+
+CURRENCIES AND HISTORICAL FX
+Preserve each object's native currency when reliably identifiable. Use an actual historical exchange rate for each currency and snapshot date from a reliable source when available. Do not treat arbitrary spreadsheet rates as authoritative. Never fabricate unavailable exchange rates; explicitly tell the user which currency/date rates are missing. USD always has rate_to_usd=1.
+
+BLANKS VS ZERO
+Blank does NOT mean zero. Preserve explicit zeros or zeros clearly established by the workbook structure. If an object disappears from later snapshots, do not invent a replacement balance.
+
+FINAL VALIDATION BEFORE DELIVERING
+Programmatically verify:
+- Both exact sheet names exist and _CapitalOS metadata_kind=capital_os_round_trip and format_version=1.
+- At least one object, snapshot, and snapshot_item exist.
+- Historical FX exists for every snapshot/currency pair and all foreign-key references resolve.
+- Every visible_range points to a real range.
+- Visible Amount matches value_minor/100.
+- Visible USD rate matches historical_fx.rate_to_usd.
+- Visible Cash matches is_cash; ownership share matches ownership_percent/10000.
+- Net worth matches the sum of included object values after FX and ownership share; cash total is calculated consistently.
+- No #REF!, #VALUE!, #DIV/0!, or #N/A errors remain.
+
+REFERENCE
+CAPITAL_OS_AI_CONVERSION_EXAMPLE.xlsx has been successfully imported into Capital OS. Use it for sheet names, snapshot layout, metadata schema, JSON structures, relationships, and FX records. Never copy its financial information or identifiers.
+
+DELIVERABLE
+Return:
+1. A NEW downloadable .xlsx workbook.
+2. A brief report showing snapshot count, date range, permanent-object count, currencies, cash objects, liabilities, and intentionally ignored budget/analytics data.
+3. A list of any unresolved ambiguities.
+The output is designed for Capital OS → "Import Capital OS", NOT for "AI Excel Import".
+If you cannot build valid _CapitalOS metadata and guarantee link integrity, do NOT present the file as ready to import. Explain the technical limitation.

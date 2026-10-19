@@ -222,3 +222,24 @@ h2 { max-width: 740px; font-size: clamp(2rem, 3.7vw, 3.4rem); letter-spacing: -0
   .feedback-card { padding: 24px 18px; }
   .feedback-field-grid { grid-template-columns: 1fr; }
 }
+
+/* Excel migration callout on the homepage */
+.excel-migration-card { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(260px,0.75fr); gap: clamp(25px,4vw,55px); align-items: center; padding: clamp(26px,4.4vw,62px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: radial-gradient(circle at 90% 25%, rgb(16 176 150 / 0.12), transparent 45%), var(--surface-soft); overflow: hidden; }
+.excel-migration-copy h2 { font-size: clamp(1.8rem,3.2vw,3rem); line-height: 1.13; max-width: 680px; margin: 12px 0 16px; }
+.excel-migration-copy > p:not(.eyebrow) { max-width: 620px; color: var(--muted-strong); line-height: 1.65; }
+.excel-migration-copy .button { margin-top: 12px; max-width: 100%; }
+.excel-migration-copy .excel-migration-note { font-size: 0.84rem; margin: 14px 0 0; }
+.excel-migration-visual { display: flex; gap: 15px; align-items: center; justify-content: center; min-width: 0; }
+.excel-migration-mini-table, .excel-migration-destination { border-radius: 14px; border: 1px solid var(--line); background: #101b28; padding: 18px; box-shadow: 0 12px 26px rgb(0 0 0 / 0.15); }
+.excel-migration-mini-table { min-width: 125px; }
+.excel-migration-mini-table > span { color: #e6eef4; font-weight: 700; display: block; margin-bottom: 14px; }
+.excel-migration-mini-table > div { display: flex; gap: 5px; margin-top: 5px; }
+.excel-migration-mini-table i { display: block; width: 26px; height: 17px; border: 1px solid #4b6b65; background: #16352f; border-radius: 2px; }
+.excel-migration-mini-table i:first-child { background: #22624f; }
+.excel-migration-arrow { color: var(--accent); font-size: 2rem; }
+.excel-migration-destination { display: flex; flex-direction: column; align-items: center; gap: 9px; min-width: 150px; text-align: center; }
+.excel-migration-destination > span { color: var(--accent); font-size: 2.25rem; }
+.excel-migration-destination strong { white-space: nowrap; }
+.excel-migration-destination small { color: var(--muted-strong); line-height: 1.4; }
+@media(max-width: 900px) { .excel-migration-card { grid-template-columns: 1fr; } }
+@media(max-width: 520px) { .excel-migration-visual { gap: 8px; } .excel-migration-mini-table, .excel-migration-destination { padding: 12px; min-width: 0; } .excel-migration-mini-table i { width: 19px; } .excel-migration-destination { min-width: 125px; } .excel-migration-copy .button { white-space: normal; text-align: center; } }

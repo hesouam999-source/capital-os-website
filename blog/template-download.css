@@ -1,0 +1,3 @@
+.template-downloads{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}
+.template-downloads .button{min-width:260px;text-align:center;white-space:normal}
+@media(max-width:650px){.template-downloads{flex-direction:column}.template-downloads .button{width:100%;min-width:0}}
